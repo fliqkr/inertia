@@ -1,0 +1,16 @@
+/// Contains default colors for the overall look of Inertia.
+
+:root {
+  // Background Colors -->
+  --color-bg-0: #121212; // Main BG color. Used for the page background and other elements with low-level prominence.
+  --color-bg-1: #1e1e1e; // Primary BG color. Used for the base state of elements, like inputs and buttons.
+  --color-bg-2: #2d2d2d; // Secondary BG color. Used for elements with a high level of prominence, like dividers, borders, or active components.
+
+  // Foreground Colors -->
+  --color-fg: #f5f5f5; // The primary foreground color. Used for text with high emphasis, like headings.
+  --color-muted: #a9a9a9; // The secondary foreground color. Used for text with low emphasis, like descriptions/
+
+  // Accent Colors -->
+  --color-accent: #7e5bef; // The accent color. Used for action components, like primary buttons or links.
+  --color-visited: #{darken(#7e5bef, 5%)}; // The 'visited' color. Used for links that have been already visited.
+}

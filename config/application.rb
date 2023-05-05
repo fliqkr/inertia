@@ -33,5 +33,9 @@ module Inertia
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Enable assets
+    config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end

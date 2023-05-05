@@ -1,0 +1,22 @@
+// Imports -->
+@import "colors"; // Import default colors and themes
+@import "font"; // Import fonts
+
+// Quick Variables -->
+$bg-0: var(--color-bg-0);
+$bg-1: var(--color-bg-1);
+$bg-2: var(--color-bg-2);
+$fg: var(--color-fg);
+$muted: var(--color-muted);
+$accent: var(--color-accent);
+$visited: var(--color-visited);
+
+// Core Styles -->
+body {
+  // Text and background color
+  background-color: $bg-0;
+  color: $fg;
+
+  // Font styles
+  font-family: "Archivo", sans-serif;
+}
