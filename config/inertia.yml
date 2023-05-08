@@ -1,0 +1,4 @@
+production:
+  motd: "Inertia is a stylish, privacy-respecting meta-search engine for the modern web."
+development:
+  motd: "Inertia is a stylish, privacy-respecting meta-search engine for the modern web."

@@ -76,6 +76,8 @@ GEM
     debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    erb-formatter (0.4.3)
+      syntax_tree (~> 6.0)
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -114,6 +116,7 @@ GEM
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
+    prettier_print (1.2.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
@@ -184,6 +187,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    syntax_tree (6.1.1)
+      prettier_print (>= 1.2.0)
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -201,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   cssbundling-rails
   debug
+  erb-formatter
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   reek
@@ -213,4 +219,4 @@ RUBY VERSION
    ruby 3.0.6p216
 
 BUNDLED WITH
-   2.2.33
+   2.4.12

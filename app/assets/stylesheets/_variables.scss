@@ -13,4 +13,7 @@
   // Accent Colors -->
   --color-accent: #7e5bef; // The accent color. Used for action components, like primary buttons or links.
   --color-visited: #{darken(#7e5bef, 5%)}; // The 'visited' color. Used for links that have been already visited.
+
+	// Numbers -->
+	--radius: 4px; // A variable for `border-radius`
 }

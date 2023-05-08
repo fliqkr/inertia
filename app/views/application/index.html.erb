@@ -1,1 +1,16 @@
-<h1>Hello, Inertia!</h1>
+<main class="Page Page--flex Page--fullscreen" data-page="index">
+	<div class="Index__Form">
+	<img class="Logo" src="/assets/logo.svg" alt="Inertia's Logo">
+	<p class="MOTD">
+			<%= @motd %>
+	</p>
+
+	<!-- The primary search input form -->
+	<form>
+			<div class="Input__Group Input__Group--Search">
+				<input class="Input__Angular Input--Search" placeholder="Search..." type="text" autocomplete="off" autocorrect="off" autofocus>
+				<input class="Button Button--Search" type="submit">
+			</div>
+		</form>
+	</div>
+</main>

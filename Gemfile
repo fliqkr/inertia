@@ -36,3 +36,5 @@ gem 'rubocop', require: false
 
 # Reek
 gem 'reek', require: false
+
+gem 'erb-formatter', require: false

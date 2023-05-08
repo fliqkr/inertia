@@ -1,8 +1,8 @@
-// Imports -->
-@import "colors"; // Import default colors and themes
+/// Imports -->
+@import "variables"; // Import default themes
 @import "font"; // Import fonts
 
-// Quick Variables -->
+/// Quick Variables -->
 $bg-0: var(--color-bg-0);
 $bg-1: var(--color-bg-1);
 $bg-2: var(--color-bg-2);
@@ -10,13 +10,118 @@ $fg: var(--color-fg);
 $muted: var(--color-muted);
 $accent: var(--color-accent);
 $visited: var(--color-visited);
+$font-family: "Archivo", sans-serif;
 
-// Core Styles -->
+/// Core Styles -->
 body {
   // Text and background color
   background-color: $bg-0;
   color: $fg;
 
   // Font styles
-  font-family: "Archivo", sans-serif;
+  font-family: $font-family;
+  text-rendering: optimizeLegibility;
+}
+
+// Styles for parent routes
+.Page {
+  // Used for pages that want to do a special form of alignment (like aligning everything to the center)
+  &.Page--flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Used for pages that take up all the space on the screen
+  &.Page--fullscreen {
+    min-height: 100vh;
+  }
+}
+
+/// Pages -->
+// The primary page found on `/`
+.Page[data-page="index"] {
+  // Align items to the center
+  justify-content: center;
+  align-items: center;
+
+  /// Specific Component Styles -->
+	.Input__Group--Search {
+		display: flex;
+		gap: 0;
+		
+		margin-top: 1.5rem;
+	}
+
+  input.Input__Angular.Input--Search {
+		// Unset the default border-radius
+		border-radius: unset;
+		border-top-left-radius: var(--radius);
+		border-bottom-left-radius: var(--radius);
+
+    width: 100%;
+    padding: 1rem 1.2rem;
+		height: 50px;
+  }
+
+  input.Button.Button--Search {
+		// Unset the default border-radius
+		border-radius: unset;
+		border-top-right-radius: var(--radius);
+		border-bottom-right-radius: var(--radius);
+
+		// Force a width of 50px
+    min-width: 50px;
+    max-width: 50px;
+
+		border: 0;
+		outline: 0;
+
+		cursor: pointer;
+		
+		background-color: $accent;
+		color: $bg-0;
+		font-weight: bold;
+		font-size: 24px;
+  }
+
+	.Logo {
+		width: 100%;
+	}
+
+	.MOTD {
+		color: $muted;
+		font-style: italic;
+	}
+}
+
+/// Components -->
+input.Input__Angular {
+  /// A striking input component designed with harsh edges.
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+
+  background-color: $bg-1;
+  color: $muted;
+
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1rem;
+
+  transition: 0.25s;
+
+	border-radius: var(--border-radius);
+
+  &:hover {
+    background-color: $bg-2;
+  }
+
+  &:focus {
+    background-color: $bg-2;
+    color: $fg;
+  }
+
+  &::placeholder {
+    color: $muted;
+  }
 }
