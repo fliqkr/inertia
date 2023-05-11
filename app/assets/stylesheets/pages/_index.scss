@@ -1,0 +1,64 @@
+// The primary page found on `/`
+.Page[data-page="index"] {
+  // Align items to the center
+  justify-content: center;
+  align-items: center;
+
+  /// Specific Component Styles -->
+	.Input__Group--Search {
+		display: flex;
+		gap: 0;
+
+		margin-top: 1.5rem;
+	}
+
+  input.Input__Angular.Input--Search {
+		// Unset the default border-radius
+		border-radius: unset;
+		border-top-left-radius: var(--radius);
+		border-bottom-left-radius: var(--radius);
+
+    width: 100%;
+    padding: 1rem 1.2rem;
+		height: 50px;
+  }
+
+  button.Button.Button--Search {
+		// Unset the default border-radius
+		border-radius: unset;
+		border-top-right-radius: var(--radius);
+		border-bottom-right-radius: var(--radius);
+
+		// Force a width of 50px
+    min-width: 50px;
+    max-width: 50px;
+
+		border: 0;
+		outline: 0;
+
+		cursor: pointer;
+
+		background-color: $accent;
+		color: $bg-0;
+		font-weight: bold;
+		font-size: 24px;
+
+		// Fit the icon properly
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.Icon {
+				@include icon(25px);
+		}
+  }
+
+	.Logo {
+		width: 100%;
+	}
+
+	.MOTD {
+		color: $muted;
+		font-style: italic;
+	}
+}
