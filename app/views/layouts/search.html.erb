@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inertia - Search</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "normalize" %>
+  </head>
+
+  <body>
+    <main class="Page Page--flex" data-page="search">
+      <!-- Navigation Bar -->
+      <nav class="Navbar"></nav>
+      <!-- End Navigation Bar -->
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

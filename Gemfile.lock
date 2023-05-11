@@ -82,8 +82,14 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.6.0)
     irb (1.6.4)
       reline (>= 0.3.0)
@@ -101,6 +107,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
+    multi_xml (0.6.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -207,6 +214,8 @@ DEPENDENCIES
   cssbundling-rails
   debug
   erb-formatter
+  httparty
+  inline_svg
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   reek
@@ -219,4 +228,4 @@ RUBY VERSION
    ruby 3.0.6p216
 
 BUNDLED WITH
-   2.4.12
+   2.4.13

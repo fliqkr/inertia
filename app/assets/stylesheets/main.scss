@@ -38,6 +38,8 @@ body {
 }
 
 /// Pages -->
+/// TODO - place these in seperate files :3
+
 // The primary page found on `/`
 .Page[data-page="index"] {
   // Align items to the center
@@ -63,7 +65,7 @@ body {
 		height: 50px;
   }
 
-  input.Button.Button--Search {
+  button.Button.Button--Search {
 		// Unset the default border-radius
 		border-radius: unset;
 		border-top-right-radius: var(--radius);
@@ -82,6 +84,15 @@ body {
 		color: $bg-0;
 		font-weight: bold;
 		font-size: 24px;
+
+		// Fit the icon properly
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.Icon {
+				@include icon(25px);
+		}
   }
 
 	.Logo {
@@ -124,4 +135,9 @@ input.Input__Angular {
   &::placeholder {
     color: $muted;
   }
+}
+
+/// Util Classes -->
+.Hidden {
+	display: none;
 }

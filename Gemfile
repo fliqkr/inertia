@@ -37,4 +37,11 @@ gem 'rubocop', require: false
 # Reek
 gem 'reek', require: false
 
+# Formatting
 gem 'erb-formatter', require: false
+
+# HTTParty for web requests
+gem 'httparty'
+
+# Some web helper things
+gem 'inline_svg'

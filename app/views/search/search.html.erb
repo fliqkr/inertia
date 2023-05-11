@@ -1,0 +1,9 @@
+<h1>Search results for "<%= params[:query] %>"</h1>
+
+<% @results.each do |result| %>
+
+  <h2><%= result[:title] %></h2>
+  <p><%= result[:description] %></p>
+  <p><a href="<%= result[:link] %>"><%= result[:link] %></a></p>
+
+<% end %>

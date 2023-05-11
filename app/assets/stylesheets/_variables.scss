@@ -1,5 +1,6 @@
 /// Contains default colors for the overall look of Inertia.
 
+/// Variables & Themes -->
 :root {
   // Background Colors -->
   --color-bg-0: #121212; // Main BG color. Used for the page background and other elements with low-level prominence.
@@ -15,5 +16,17 @@
   --color-visited: #{darken(#7e5bef, 5%)}; // The 'visited' color. Used for links that have been already visited.
 
 	// Numbers -->
-	--radius: 4px; // A variable for `border-radius`
+	--radius: 2px; // A variable for `border-radius`
+
+	// Classes -->
+	.Icon--on-foreground {
+		fill: var(--color-bg-0);
+	}
+}
+
+/// Mixins -->
+@mixin icon($size: 24px) {
+	width: $size;
+	height: $size;
+	vertical-align: middle;
 }
