@@ -6,32 +6,56 @@
 
   /// Specific Component Styles -->
 	.Input__Group--Search {
+    position: relative;
+
 		display: flex;
+    align-items: center;
 		gap: 0;
 
 		margin-top: 1.5rem;
+
+    // Static width so the animation below works
+    width: 550px;
 	}
 
-  input.Input__Angular.Input--Search {
-		// Unset the default border-radius
-		border-radius: unset;
-		border-top-left-radius: var(--radius);
-		border-bottom-left-radius: var(--radius);
+  // NOTE: The same design is used in _search.scss. If you update it here, try to update it there too.
+  input.Input__Default.Input--Search {
+		border-radius: var(--radius);
 
     width: 100%;
     padding: 1rem 1.2rem;
-		height: 50px;
+
+    // Space for the search button
+    padding-right: 3.5rem;
+
+    height: 50px;
+    outline: 3px solid transparent;
+
+    &:focus {
+      @include glow-xl();
+
+      transform: scale(1.05);
+      font-size: 18px;
+      outline: 2px solid $accent;
+      outline-offset: 3px;
+
+      & ~ .Button--Search {
+        // Magic value ;p
+        right: -5px;
+      }
+    }
+
   }
 
   button.Button.Button--Search {
-		// Unset the default border-radius
-		border-radius: unset;
-		border-top-right-radius: var(--radius);
-		border-bottom-right-radius: var(--radius);
+    position: absolute;
+    right: calc((50px - 35px) / 2);
 
-		// Force a width of 50px
-    min-width: 50px;
-    max-width: 50px;
+		border-radius: var(--radius-sm);
+
+		// Force a size of 35px
+    width: 35px;
+    height: 35px;
 
 		border: 0;
 		outline: 0;
@@ -48,8 +72,10 @@
 		justify-content: center;
 		align-items: center;
 
+    transition: .25s;
+
 		.Icon {
-				@include icon(25px);
+				@include icon(20px);
 		}
   }
 

@@ -4,6 +4,7 @@
 
 // Pages ->
 @import 'pages/index';
+@import 'pages/search';
 
 /// Core Styles -->
 body {
@@ -14,6 +15,8 @@ body {
   // Font styles
   font-family: $font-family;
   text-rendering: optimizeLegibility;
+
+  margin: 0;
 }
 
 // Styles for parent routes
@@ -31,8 +34,7 @@ body {
 }
 
 /// Components -->
-input.Input__Angular {
-  /// A striking input component designed with harsh edges.
+input.Input__Default {
   border: none;
   outline: none;
   box-sizing: border-box;
@@ -65,4 +67,8 @@ input.Input__Angular {
 /// Util Classes -->
 .Hidden {
 	display: none;
+}
+
+.Muted {
+  color: $muted;
 }

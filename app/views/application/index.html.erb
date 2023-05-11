@@ -5,14 +5,15 @@
       <%= @motd %>
     </p>
     <!-- The primary search input form -->
-    <form>
+    <form action="/search">
       <div class="Input__Group Input__Group--Search">
         <input
-          class="Input__Angular Input--Search"
+          class="Input__Default Input--Search"
           placeholder="Search..."
           type="text"
           autocomplete="off"
           autocorrect="off"
+          name="query"
           autofocus
         >
         <button for="Search+Submit" class="Button Button--Search">

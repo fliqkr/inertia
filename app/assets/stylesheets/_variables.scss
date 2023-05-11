@@ -13,10 +13,12 @@
 
   // Accent Colors -->
   --color-accent: #7e5bef; // The accent color. Used for action components, like primary buttons or links.
-  --color-visited: #{darken(#7e5bef, 5%)}; // The 'visited' color. Used for links that have been already visited.
+  --color-accent-glow: #7e5bef40; // Same thing as above but used as glow (lower opacity).
+  --color-visited: #{darken(#7e5bef, 6%)}; // The 'visited' color. Used for links that have been already visited.
 
 	// Numbers -->
-	--radius: 2px; // A variable for `border-radius`
+	--radius: 10px; // A variable for `border-radius`
+  --radius-sm: 8px; // Used for rounded elements inside of rounded elements. Usually a bit smaller than the normal radius.
 
 	// Classes -->
 	.Icon--on-foreground {
@@ -39,4 +41,12 @@ $font-family: "Archivo", sans-serif;
 	width: $size;
 	height: $size;
 	vertical-align: middle;
+}
+
+@mixin glow-lg() {
+  box-shadow: 0 6px 15px -3px var(--color-accent-glow), 0 2px 6px -4px var(--color-accent-glow);
+}
+
+@mixin glow-xl() {
+  box-shadow: 0 8px 25px -5px var(--color-accent-glow), 0 3px 10px -6px var(--color-accent-glow);
 }

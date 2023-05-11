@@ -1,9 +1,21 @@
-<h1>Search results for "<%= params[:query] %>"</h1>
 
-<% @results.each do |result| %>
+<!-- Results -->
+<div class="Results">
+  <!-- Elapsed Time -->
+  <p class="TimeElapsed Muted">Took <i><%= @time_elapsed %></i> to fetch the search results.</p>
 
-  <h2><%= result[:title] %></h2>
-  <p><%= result[:description] %></p>
-  <p><a href="<%= result[:link] %>"><%= result[:link] %></a></p>
+  <!-- Results themselves -->
+  <% @results.each do |result| %>
+    <div class="Result">
+      <h2 class="Result__Title">
+        <a class="Result__Link" href="<%= result[:link] %>" target="_blank">
+          <%= result[:title] %>
+        </a>
+      </h2>
+      <p class="Result__Description">
+        <%= result[:description] %>
+      </p>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

@@ -1,0 +1,131 @@
+// The page found on `/search`
+.Page[data-page="search"] {
+  --max-width: 1200px;
+
+  .Navbar {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: var(--max-width);
+    border-bottom: 1px solid $bg-2;
+
+    .Navbar__Search {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+
+      .Navbar__Logo {
+        max-height: 40px;
+      }
+
+      form, .Input__Group--Search {
+        width: 100%;
+        max-width: calc(var(--max-width) / 2)
+      }
+
+      .Input__Group--Search {
+        position: relative;
+
+		    display: flex;
+        align-items: center;
+		    gap: 0;
+	    }
+
+      // NOTE: The same design is used in _index.scss. If you update it here, try to update it there too.
+      input.Input__Default.Input--Search {
+		    // Unset the default border-radius
+		    border-radius: var(--radius);
+
+        width: 100%;
+        padding: 0.8rem 1rem;
+        outline: 3px solid transparent;
+        height: 45px;
+        font-size: 16px;
+
+        &:focus {
+          @include glow-lg();
+
+          outline: 2px solid $accent;
+          outline-offset: 3px;
+        }
+
+      }
+
+      button.Button.Button--Search {
+        position: absolute;
+        right: 0;
+		    border-radius: var(--radius);
+
+		    // Force a size of 45px
+        width: 45px;
+        height: 45px;
+
+		    border: 0;
+		    outline: 0;
+
+		    cursor: pointer;
+
+		    background-color: $accent;
+		    color: $bg-0;
+		    font-weight: bold;
+		    font-size: 24px;
+
+		    // Fit the icon properly
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+
+        transition: .25s;
+
+		    .Icon {
+				  @include icon(20px);
+		    }
+      }
+    }
+  }
+
+  .Results {
+    padding: 2rem;
+    max-width: var(--max-width);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    .TimeElapsed {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .Result {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      max-width: calc(var(--max-width) / 2 );
+
+      h2, p {
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 20px;
+        line-height: 32px;
+
+        a {
+          color: $accent;
+          text-underline-offset: 6px;
+
+          &:visited {
+            color: $visited;
+          }
+        }
+      }
+
+      p {
+        font-size: 16px;
+        color: $muted;
+      }
+    }
+  }
+}

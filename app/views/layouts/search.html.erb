@@ -13,7 +13,29 @@
   <body>
     <main class="Page Page--flex" data-page="search">
       <!-- Navigation Bar -->
-      <nav class="Navbar"></nav>
+      <nav class="Navbar">
+        <div class="Navbar__Search">
+          <img class="Navbar__Logo" src="/assets/logo.svg">
+          <form action="/search">
+            <div class="Input__Group Input__Group--Search">
+              <input
+                class="Input__Default Input--Search"
+                placeholder="Search..."
+                type="text"
+                autocomplete="off"
+                autocorrect="off"
+                value="<%= params[:query] %>"
+                name="query"
+              >
+              <button for="Search+Submit" class="Button Button--Search">
+                <%= inline_svg("icons/search.svg", class: "Icon Icon--on-foreground") %>
+              </button>
+              <input id="Search+Submit" class="Hidden" type="submit">
+            </div>
+          </form>
+        </div>
+        <div class="Navbar__Subbar"></div>
+      </nav>
       <!-- End Navigation Bar -->
 
       <%= yield %>
