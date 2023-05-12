@@ -5,22 +5,22 @@
   align-items: center;
 
   /// Specific Component Styles -->
-	.Input__Group--Search {
+  .Input__Group--Search {
     position: relative;
 
-		display: flex;
+    display: flex;
     align-items: center;
-		gap: 0;
+    gap: 0;
 
-		margin-top: 1.5rem;
+    margin-top: 1.5rem;
 
     // Static width so the animation below works
     width: 550px;
-	}
+  }
 
   // NOTE: The same design is used in _search.scss. If you update it here, try to update it there too.
   input.Input__Default.Input--Search {
-		border-radius: var(--radius);
+    border-radius: var(--radius);
 
     width: 100%;
     padding: 1rem 1.2rem;
@@ -44,47 +44,50 @@
         right: -5px;
       }
     }
-
   }
 
   button.Button.Button--Search {
     position: absolute;
     right: calc((50px - 35px) / 2);
 
-		border-radius: var(--radius-sm);
+    border-radius: var(--radius-sm);
 
-		// Force a size of 35px
+    // Force a size of 35px
     width: 35px;
     height: 35px;
 
-		border: 0;
-		outline: 0;
+    border: 0;
+    outline: 0;
 
-		cursor: pointer;
+    cursor: pointer;
 
-		background-color: $accent;
-		color: $bg-0;
-		font-weight: bold;
-		font-size: 24px;
+    background-color: $accent;
+    color: $bg-0;
+    font-weight: bold;
+    font-size: 24px;
 
-		// Fit the icon properly
-		display: flex;
-		justify-content: center;
-		align-items: center;
+    // Fit the icon properly
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    transition: .25s;
+    transition: 0.25s;
 
-		.Icon {
-				@include icon(20px);
-		}
+    &:hover {
+      background-color: $accent-2;
+    }
+
+    .Icon {
+      @include icon(20px);
+    }
   }
 
-	.Logo {
-		width: 100%;
-	}
+  .Logo {
+    width: 100%;
+  }
 
-	.MOTD {
-		color: $muted;
-		font-style: italic;
-	}
+  .MOTD {
+    color: $muted;
+    font-style: italic;
+  }
 }

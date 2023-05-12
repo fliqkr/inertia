@@ -3,8 +3,8 @@
 @import "font"; // Import fonts
 
 // Pages ->
-@import 'pages/index';
-@import 'pages/search';
+@import "pages/index";
+@import "pages/search";
 
 /// Core Styles -->
 body {
@@ -48,7 +48,7 @@ input.Input__Default {
 
   transition: 0.25s;
 
-	border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
 
   &:hover {
     background-color: $bg-2;
@@ -66,9 +66,17 @@ input.Input__Default {
 
 /// Util Classes -->
 .Hidden {
-	display: none;
+  display: none;
 }
 
 .Muted {
   color: $muted;
+}
+
+.ImageLink {
+  text-decoration: none;
+
+  img {
+    vertical-align: middle;
+  }
 }

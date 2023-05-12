@@ -9,21 +9,23 @@
 
   // Foreground Colors -->
   --color-fg: #f5f5f5; // The primary foreground color. Used for text with high emphasis, like headings.
-  --color-muted: #a9a9a9; // The secondary foreground color. Used for text with low emphasis, like descriptions/
+  --color-muted: #a9a9a9; // The secondary foreground color. Used for text with low emphasis, like descriptions.
+  --color-disabled: #7f7f7f; // The tertiary foreground color. Used for disabled elements or text with extremely low emphasis, like details.
 
   // Accent Colors -->
   --color-accent: #7e5bef; // The accent color. Used for action components, like primary buttons or links.
+  --color-accent-2: #{lighten(#7e5bef, 6%)}; // A lighter accent color. Used for hover effects on action components.
   --color-accent-glow: #7e5bef40; // Same thing as above but used as glow (lower opacity).
   --color-visited: #{darken(#7e5bef, 6%)}; // The 'visited' color. Used for links that have been already visited.
 
-	// Numbers -->
-	--radius: 10px; // A variable for `border-radius`
+  // Numbers -->
+  --radius: 10px; // A variable for `border-radius`
   --radius-sm: 8px; // Used for rounded elements inside of rounded elements. Usually a bit smaller than the normal radius.
 
-	// Classes -->
-	.Icon--on-foreground {
-		fill: var(--color-bg-0);
-	}
+  // Classes -->
+  .Icon--on-foreground {
+    fill: var(--color-bg-0);
+  }
 }
 
 /// SCSS Variables -->
@@ -32,21 +34,25 @@ $bg-1: var(--color-bg-1);
 $bg-2: var(--color-bg-2);
 $fg: var(--color-fg);
 $muted: var(--color-muted);
+$disabled: var(--color-disabled);
 $accent: var(--color-accent);
+$accent-2: var(--color-accent-2);
 $visited: var(--color-visited);
 $font-family: "Archivo", sans-serif;
 
 /// Mixins -->
 @mixin icon($size: 24px) {
-	width: $size;
-	height: $size;
-	vertical-align: middle;
+  width: $size;
+  height: $size;
+  vertical-align: middle;
 }
 
 @mixin glow-lg() {
-  box-shadow: 0 6px 15px -3px var(--color-accent-glow), 0 2px 6px -4px var(--color-accent-glow);
+  box-shadow: 0 6px 15px -3px var(--color-accent-glow),
+    0 2px 6px -4px var(--color-accent-glow);
 }
 
 @mixin glow-xl() {
-  box-shadow: 0 8px 25px -5px var(--color-accent-glow), 0 3px 10px -6px var(--color-accent-glow);
+  box-shadow: 0 8px 25px -5px var(--color-accent-glow),
+    0 3px 10px -6px var(--color-accent-glow);
 }

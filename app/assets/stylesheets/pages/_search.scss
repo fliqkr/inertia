@@ -6,8 +6,12 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    max-width: var(--max-width);
     border-bottom: 1px solid $bg-2;
+
+    .Navbar__Search,
+    .Navbar__Subbar {
+      max-width: var(--max-width);
+    }
 
     .Navbar__Search {
       display: flex;
@@ -18,23 +22,24 @@
         max-height: 40px;
       }
 
-      form, .Input__Group--Search {
+      form,
+      .Input__Group--Search {
         width: 100%;
-        max-width: calc(var(--max-width) / 2)
+        max-width: calc(var(--max-width) / 2);
       }
 
       .Input__Group--Search {
         position: relative;
 
-		    display: flex;
+        display: flex;
         align-items: center;
-		    gap: 0;
-	    }
+        gap: 0;
+      }
 
       // NOTE: The same design is used in _index.scss. If you update it here, try to update it there too.
       input.Input__Default.Input--Search {
-		    // Unset the default border-radius
-		    border-radius: var(--radius);
+        // Unset the default border-radius
+        border-radius: var(--radius);
 
         width: 100%;
         padding: 0.8rem 1rem;
@@ -48,38 +53,41 @@
           outline: 2px solid $accent;
           outline-offset: 3px;
         }
-
       }
 
       button.Button.Button--Search {
         position: absolute;
         right: 0;
-		    border-radius: var(--radius);
+        border-radius: var(--radius);
 
-		    // Force a size of 45px
+        // Force a size of 45px
         width: 45px;
         height: 45px;
 
-		    border: 0;
-		    outline: 0;
+        border: 0;
+        outline: 0;
 
-		    cursor: pointer;
+        cursor: pointer;
 
-		    background-color: $accent;
-		    color: $bg-0;
-		    font-weight: bold;
-		    font-size: 24px;
+        background-color: $accent;
+        color: $bg-0;
+        font-weight: bold;
+        font-size: 24px;
 
-		    // Fit the icon properly
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
+        // Fit the icon properly
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        transition: .25s;
+        transition: 0.25s;
 
-		    .Icon {
-				  @include icon(20px);
-		    }
+        &:hover {
+          background-color: $accent-2;
+        }
+
+        .Icon {
+          @include icon(20px);
+        }
       }
     }
   }
@@ -102,29 +110,118 @@
       flex-direction: column;
       gap: 0.5rem;
 
-      max-width: calc(var(--max-width) / 2 );
+      width: clamp(80vw, 80vw, 800px);
+      max-width: 650px;
 
-      h2, p {
+      h2,
+      p {
         margin: 0;
       }
 
-      h2 {
+      h2,
+      h3 {
         font-size: 20px;
-        line-height: 32px;
+        line-height: 42px;
 
         a {
-          color: $accent;
-          text-underline-offset: 6px;
+          position: relative;
+          color: $fg;
+          text-decoration: none;
 
-          &:visited {
-            color: $visited;
+          &,
+          &::after {
+            transition: 0.1s;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: $fg;
+            opacity: 0.1;
+          }
+
+          &:hover {
+            color: $accent;
+
+            &::after {
+              background-color: $accent;
+              //opacity: 1;
+            }
           }
         }
+      }
+
+      h3 {
+        font-size: 16px;
+        line-height: 28px;
       }
 
       p {
         font-size: 16px;
         color: $muted;
+      }
+
+      .Result__Sublinks {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        padding: 0.5rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid $bg-1;
+
+        h3 {
+          margin-top: 0;
+          line-height: 24px;
+          margin-bottom: 0.25rem;
+
+          a::after {
+            display: none;
+          }
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      .Result__RichContent {
+        color: $disabled;
+        font-size: 14px;
+
+        &--object {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+
+          .RichContent__Item {
+            display: block;
+
+            .RichContent__Key,
+            .RichContent__Value {
+              display: inline-block;
+              width: fit-content;
+
+              a {
+                color: $fg;
+                text-underline-offset: 4px;
+                transition: 0.1s;
+
+                &:hover {
+                  color: $accent;
+                }
+              }
+            }
+
+            .RichContent__Value {
+              color: $muted;
+            }
+          }
+        }
       }
     }
   }

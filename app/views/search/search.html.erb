@@ -1,9 +1,9 @@
-
 <!-- Results -->
 <div class="Results">
   <!-- Elapsed Time -->
-  <p class="TimeElapsed Muted">Took <i><%= @time_elapsed %></i> to fetch the search results.</p>
-
+  <p class="TimeElapsed Muted">Took
+    <i><%= @time_elapsed %></i>
+    to fetch the search results.</p>
   <!-- Results themselves -->
   <% @results.each do |result| %>
     <div class="Result">
@@ -15,7 +15,44 @@
       <p class="Result__Description">
         <%= result[:description] %>
       </p>
-    </div>
+      <!-- Sublinks -->
+      <% if !result[:sublinks].nil? and !result[:sublinks].empty? %>
+        <div class="Result__Sublinks">
+          <% result[:sublinks].each do |sublink| %>
+            <div class="Result__Sublink">
+              <h3 class="Sublink__Title">
+                <a class="Sublink__Link" href="<%= sublink[:link] %>" target="_blank">
+                  <%= sublink[:title] %>
+                </a>
+              </h3>
 
+              <p class="Sublink__Description">
+                <%= sublink[:description] %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- Rich Content (key-value) -->
+      <% if !result[:rich_content_object].nil? and !result[:rich_content_object].empty? %>
+        <div class="Result__RichContent Result__RichContent--object">
+          <% result[:rich_content_object].each do |rc| %>
+            <div class="RichContent__Item">
+              <div class="RichContent__Key">
+                <%= rc[:key] %>
+              </div>
+              <div class="RichContent__Value">
+                <% if rc[:value][:type] == :link %>
+                  <% rc_split = rc[:value][:content].split("|") %>
+                  <a class="RichContent__Link" href="<%= rc_split[1] %>"><%= rc_split[0] %></a>
+                <% elsif rc[:value][:type] == :text %>
+                  <%= rc[:value][:content] %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
