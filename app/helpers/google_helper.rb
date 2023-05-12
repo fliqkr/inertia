@@ -71,7 +71,7 @@ module GoogleHelper
       # Select the sublink title, description and link
       title_elem = link.css('h3').first
       link_elem = link.css('a').first
-      description_elem = item.css('div.zz3gNc').first
+      description_elem = link.css('div.zz3gNc').first
 
       # Get the content
       title = title_elem.text.strip if title_elem
