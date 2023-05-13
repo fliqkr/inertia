@@ -1,8 +1,7 @@
 request: &request
   user_agent: "Mozilla/5.0 (Windows NT 10.0; rv:112.0) Gecko/20100101 Firefox/112.0"
 
-global: &global
-  # The message displayed on the index page of Inertia
+global: &global # The message displayed on the index page of Inertia
   motd: "Inertia is a stylish, privacy-respecting meta-search engine for the modern web."
 
   # * Google related options -->
@@ -11,9 +10,18 @@ global: &global
     <<: *request
 
     # The TLD to use for requests made towards Google.
-    # e.g. com => google.com
+    # e.g. 'com' => google.com
     tld: "com"
 
+  # * Wikipedia related options -->
+  wikipedia:
+    # Merge the `request` anchor
+    <<: *request
+
+    # The language of Wikipedia.
+    # This is used to filter searchr results and display summaries.
+    # e.g. 'en' => en.wikipedia.org
+    language: "en"
 
 # Needed for Rails to correctly parse the config :p
 production:

@@ -26,7 +26,8 @@ module GoogleHelper
     # Select result boxes
     # You can view the current DOM layout of Google by just searching
     # for something and exploring it with devtools.
-    dom.css('div.g').each do |item|
+    # NOTE: Class `.liYKde` contains a href for '#' which breaks stuff.
+    dom.css('div.g:not(.liYKde)').each do |item|
       # Result Properties -->
 
       # Select the result title, description and link
@@ -43,11 +44,16 @@ module GoogleHelper
       sublinks = get_sublinks(item)
       rich_content_object = get_rich_content_object(item)
 
+      # Optionally get a favicon
+      favicon_elem = item.css('img.XNo5Ab').first
+      favicon = favicon_elem['src'] if favicon_elem
+
       # Add it to our results
       results << {
         title: title,
         link: link,
         description: description,
+        favicon: favicon,
         sublinks: sublinks,
         rich_content_object: rich_content_object
       }
