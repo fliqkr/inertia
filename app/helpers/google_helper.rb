@@ -1,21 +1,21 @@
 require 'httparty'
 require 'nokogiri'
 
-# A helper for Google-related searches
+# A helper for Google related searches
 module GoogleHelper
+  # Some variables from the configuration
+  config = Rails.configuration.inertia.google
+
+  TLD = config[:tld]
+  USER_AGENT = config[:user_agent]
+
   def google_text_search(query)
     # Encode the query
     query = URI.encode_www_form_component(query).gsub('+', '%20')
 
-    # Some variables from the configuration
-    config = Rails.configuration.inertia.google
-
-    tld = config[:tld]
-    user_agent = config[:user_agent]
-
     # Send the request to Google
-    url = "https://www.google.#{tld}/search?q=#{query}"
-    res = HTTParty.get(url, headers: { 'User-Agent' => user_agent })
+    url = "https://www.google.#{TLD}/search?q=#{query}"
+    res = HTTParty.get(url, headers: { 'User-Agent' => USER_AGENT })
     html = res.body
 
     # Get the DOM

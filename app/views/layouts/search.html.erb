@@ -37,7 +37,15 @@
         <div class="Navbar__Subbar"></div>
       </nav>
       <!-- End Navigation Bar -->
-      <%= yield %>
+      <div class="Search">
+        <!-- Elapsed Time -->
+        <p class="TimeElapsed Muted">
+          Took
+          <i><%= @time_elapsed %></i>
+          to fetch the search results.
+        </p>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

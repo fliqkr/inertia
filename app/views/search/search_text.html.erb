@@ -1,0 +1,93 @@
+<!-- A wrapper to handle row/columns -->
+<div class="Results__Wrapper">
+  <!-- Widgets -->
+  <% if !@widgets.nil? and !@widgets.empty? %>
+    <div class="Widgets">
+      <% @widgets.each do |widget| %>
+        <div class="Widget" data-widget="<%= widget[:type] %>">
+          <% case widget[:type] %>
+          <% when "wikipedia" %>
+            <% content = widget[:content] %>
+            <div class="Widget__Content">
+              <img
+                src="data:image/png;base64,<%= content[:thumbnail][:data] %>"
+                class="Thumbnail"
+              >
+              <h3><%= content[:title] %></h3>
+              <p><%= content[:text] %></p>
+            </div>
+            <a class="Widget__Button" href="<%= content[:article] %>" target="_blank">
+
+              Read more on Wikipedia.org
+              <%= inline_svg("icons/open_in_new.svg", class: "Icon Icon--muted") %>
+            </a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- Results -->
+  <div class="Results" data-type="text">
+    <!-- Results themselves -->
+    <% @results.each do |result| %>
+      <div class="Result">
+        <span class="Result__URL">
+          <!-- Favicon -->
+          <% if !result[:favicon].nil? %>
+            <div class="Result__Favicon">
+              <img src="<%= result[:favicon] %>">
+            </div>
+          <% end %>
+          <!-- Formatted URL -->
+          <%= format_url(result[:link]) %>
+        </span>
+        <h2 class="Result__Title">
+          <a class="Result__Link" href="<%= result[:link] %>" target="_blank">
+            <%= result[:title] %>
+          </a>
+        </h2>
+        <p class="Result__Description">
+          <%= result[:description] %>
+        </p>
+        <!-- Sublinks -->
+        <% if !result[:sublinks].nil? and !result[:sublinks].empty? %>
+          <div class="Result__Sublinks">
+            <% result[:sublinks].each do |sublink| %>
+              <div class="Result__Sublink">
+                <h3 class="Sublink__Title">
+                  <a class="Sublink__Link" href="<%= sublink[:link] %>" target="_blank">
+                    <%= sublink[:title] %>
+                  </a>
+                </h3>
+
+                <p class="Sublink__Description">
+                  <%= sublink[:description] %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <!-- Rich Content (key-value) -->
+        <% if !result[:rich_content_object].nil? and !result[:rich_content_object].empty? %>
+          <div class="Result__RichContent Result__RichContent--object">
+            <% result[:rich_content_object].each do |rc| %>
+              <div class="RichContent__Item">
+                <div class="RichContent__Key">
+                  <%= rc[:key] %>
+                </div>
+                <div class="RichContent__Value">
+                  <% if rc[:value][:type] == :link %>
+                    <% rc_split = rc[:value][:content].split("|") %>
+                    <a class="RichContent__Link" href="<%= rc_split[1] %>"><%= rc_split[0] %></a>
+                  <% elsif rc[:value][:type] == :text %>
+                    <%= rc[:value][:content] %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

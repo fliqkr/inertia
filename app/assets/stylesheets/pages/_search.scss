@@ -94,15 +94,23 @@
 
   .Search {
     padding: 2rem;
-  }
 
-  .Results__Wrapper {
-    display: flex;
+    // A class for text-based results
+    .Results__Wrapper {
+      display: flex;
 
-    // Reverse it because .Widgets comes first.
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    gap: 3rem;
+      // Reverse it because .Widgets comes first.
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 3rem;
+    }
+
+    // Shows the time it took to fetch data
+    .TimeElapsed {
+      margin: 0;
+      margin-bottom: 1rem;
+      font-size: 14px;
+    }
   }
 
   .Widgets {
@@ -173,13 +181,7 @@
     }
   }
 
-  .TimeElapsed {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: 14px;
-  }
-
-  .Results {
+  .Results[data-type="text"] {
     max-width: var(--max-width);
 
     display: flex;
@@ -337,5 +339,8 @@
         }
       }
     }
+  }
+
+  .Results[data-type="image"] {
   }
 }
