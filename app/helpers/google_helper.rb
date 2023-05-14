@@ -13,8 +13,6 @@ module GoogleHelper
     # Encode the query
     query = URI.encode_www_form_component(query).gsub('+', '%20')
 
-    puts page, page * 10
-
     # Send the request to Google
     url = "https://www.google.#{TLD}/search?q=#{query}&start=#{page * 10}"
     res = HTTParty.get(url, headers: { 'User-Agent' => USER_AGENT })

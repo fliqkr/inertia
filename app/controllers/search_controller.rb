@@ -28,12 +28,10 @@ class SearchController < ApplicationController
     # Results -->
     case @search_type
     when 0 # Text search
-      raw = google_text_search(@search_query, @search_page)
+      raw = google_text_search(@search_query, @search_page - 1)
       @results = raw[:results]
       @max_pages = raw[:pages]
       @widgets = []
-
-      puts @max_pages
 
       # Wikipedia ->
       wikipedia_result = get_wikipedia_summary(@results)
