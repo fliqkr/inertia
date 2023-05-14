@@ -6,12 +6,20 @@ class SearchController < ApplicationController
   include WikipediaHelper
 
   def search
-    search_query = params[:query]
+    @search_query = params[:query]
 
     begin
-      search_type = Integer(params[:type]).abs
+      @search_page = Integer(params[:page]).abs
+
+      @search_page = 1 if @search_page.zero?
     rescue ArgumentError, TypeError
-      search_type = 0
+      @search_page = 1
+    end
+
+    begin
+      @search_type = Integer(params[:type]).abs
+    rescue ArgumentError, TypeError
+      @search_type = 0
     end
 
     # TODO: Better benchmark timers (clicking on it opens a drawer which displays how long each step took)
@@ -19,9 +27,9 @@ class SearchController < ApplicationController
     start_time = Time.now
 
     # Results -->
-    case search_type
+    case @search_type
     when 0 # Text search
-      @results = google_text_search(search_query)
+      @results = google_text_search(@search_query)
       @widgets = []
 
       # Wikipedia ->
@@ -33,7 +41,7 @@ class SearchController < ApplicationController
       @search_engine = params[:engine] || Rails.configuration.inertia.search[:default_image_engine]
       case @search_engine
       when 'qwant'
-        @results = qwant_image_search(search_query)
+        @results = qwant_image_search(@search_query)
       when 'bing'
       end
 

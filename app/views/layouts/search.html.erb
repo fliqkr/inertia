@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <main class="Page Page--flex" data-page="search">
+    <main class="Page Page--flex" data-page="search" data-type="<%= @search_type %>">
       <!-- Navigation Bar -->
       <nav class="Navbar">
         <div class="Navbar__Search">
@@ -34,7 +34,16 @@
             </div>
           </form>
         </div>
-        <div class="Navbar__Subbar"></div>
+        <div class="Navbar__Subbar">
+          <a class="Navbar__Button" data-type="0" href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=0" %>">
+            <%= inline_svg("icons/search.svg", class: "Icon") %>
+            General
+          </a>
+          <a class="Navbar__Button" data-type="1" href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=1" %>">
+            <%= inline_svg("icons/picture.svg", class: "Icon") %>
+            Images
+          </a>
+        </div>
       </nav>
       <!-- End Navigation Bar -->
       <div class="Search">
