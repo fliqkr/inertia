@@ -1,6 +1,7 @@
 // The page found on `/search`
 .Page[data-page="search"] {
   --max-width: 1200px;
+  --page-padding: 2rem;
 
   .Navbar {
     display: flex;
@@ -93,7 +94,7 @@
   }
 
   .Search {
-    padding: 2rem;
+    padding: var(--page-padding);
 
     // A class for text-based results
     .Results__Wrapper {
@@ -342,5 +343,60 @@
   }
 
   .Results[data-type="image"] {
+    .Images {
+      display: grid;
+
+      // Automatically fit as many elements as possible
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+
+      max-width: calc(100vw - /* Page Padding */ var(--page-padding));
+
+      .Image {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        padding: 0.75rem;
+        box-sizing: border-box;
+        border-radius: var(--radius);
+
+        height: 250px;
+
+        color: $muted;
+        text-decoration: none;
+
+        transition: 0.1s;
+        outline: 2px solid transparent;
+
+        &:hover {
+          background-color: $bg-2;
+          color: $fg;
+          text-decoration: underline;
+          outline: 2px solid $bg-1;
+          outline-offset: 3px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: var(--radius);
+        }
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          line-height: 24px;
+          font-size: 14px;
+          text-underline-offset: 8px;
+          text-decoration-color: $muted;
+        }
+      }
+    }
+
+    &[data-engine="qwant"] {
+    }
   }
 }

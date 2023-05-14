@@ -4,18 +4,34 @@ request: &request
 global: &global # The message displayed on the index page of Inertia
   motd: "Inertia is a stylish, privacy-respecting meta-search engine for the modern web."
 
+  # * Global search options -->
+  search:
+    # The default engine for text searches.
+    # Accepted options: google
+    default_text_engine: "google"
+
+    # The default engine for image searches.
+    # Accepted options: qwant; bing
+    default_image_engine: "qwant"
+
   # * Google related options -->
   google:
-    # Merge the `request` anchor
     <<: *request
 
     # The TLD to use for requests made towards Google.
     # e.g. 'com' => google.com
     tld: "com"
 
+  # * Qwant related options -->
+  qwant:
+    <<: *request
+
+  # * Bing related options -->
+  bing:
+    <<: *request
+
   # * Wikipedia related options -->
   wikipedia:
-    # Merge the `request` anchor
     <<: *request
 
     # The language of Wikipedia.
@@ -25,7 +41,9 @@ global: &global # The message displayed on the index page of Inertia
 
 # Needed for Rails to correctly parse the config :p
 production:
+  <<: *request
   <<: *global
 
 development:
+  <<: *request
   <<: *global

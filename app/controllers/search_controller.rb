@@ -1,6 +1,7 @@
 # Controller for the /search route
 class SearchController < ApplicationController
   include GoogleHelper
+  include QwantHelper
   include UrlHelper
   include WikipediaHelper
 
@@ -29,7 +30,14 @@ class SearchController < ApplicationController
 
       rendered_page = :search_text
     when 1 # Image search
-      @results = google_image_search(search_query)
+      @search_engine = params[:engine] || Rails.configuration.inertia.search[:default_image_engine]
+      case @search_engine
+      when 'qwant'
+        @results = qwant_image_search(search_query)
+      when 'bing'
+      end
+
+      puts @results
 
       rendered_page = :search_image
     end

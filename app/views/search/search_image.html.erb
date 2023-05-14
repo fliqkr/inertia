@@ -1,1 +1,14 @@
-<%= @results %>
+<div class="Results" data-type="image" data-engine="<%= @search_engine %>">
+  <div class="Images">
+    <% case @search_engine %>
+    <% when 'qwant' %>
+      <!-- Qwant Results -->
+      <% @results.each do |result| %>
+        <a class="Image" href="<%= result[:image_link] %>" target="_blank">
+          <img src="<%= result[:thumbnail] %>">
+          <span><%= result[:alt] %></span>
+        </a>
+      <% end %>
+    <% end %>
+  </div>
+</div>
