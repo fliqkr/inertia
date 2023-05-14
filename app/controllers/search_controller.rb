@@ -10,7 +10,6 @@ class SearchController < ApplicationController
 
     begin
       @search_page = Integer(params[:page]).abs
-
       @search_page = 1 if @search_page.zero?
     rescue ArgumentError, TypeError
       @search_page = 1
@@ -29,8 +28,12 @@ class SearchController < ApplicationController
     # Results -->
     case @search_type
     when 0 # Text search
-      @results = google_text_search(@search_query)
+      raw = google_text_search(@search_query, @search_page)
+      @results = raw[:results]
+      @max_pages = raw[:pages]
       @widgets = []
+
+      puts @max_pages
 
       # Wikipedia ->
       wikipedia_result = get_wikipedia_summary(@results)

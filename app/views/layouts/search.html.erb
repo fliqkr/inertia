@@ -55,8 +55,44 @@
           <i><%= @time_elapsed %></i>
           to fetch the search results.
         </p>
+
         <%= yield %>
+
+        <!-- Pagination -->
+        <% if !@max_pages.nil? %>
+          <div class="Pagination">
+            <% if @search_page > 1 %>
+              <a class="Switch" href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{@search_page - 1}" %>">
+                <%= inline_svg("icons/arrow_left.svg", class: "Icon") %>
+                Previous
+              </a>
+              <span class="Separator"></span>
+            <% end %>
+
+            <% (1..@max_pages).each do |page| %>
+              <% if page == @search_page %>
+                <span class="Current"><%= page %></span>
+              <% elsif page.between?(@search_page - 2, @search_page + 2) %>
+                <a href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{page}" %>"><%= page %></a>
+              <% elsif page == 1 || page == @max_pages %>
+                <a href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{page}" %>"><%= page %></a>
+              <% elsif page == @search_page - 3 || page == @search_page + 3 %>
+                <span class="Disabled">...</span>
+              <% end %>
+            <% end %>
+
+            <% if @search_page < @max_pages %>
+              <span class="Separator"></span>
+
+              <a class="Switch" href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{@search_page + 1}" %>"">
+                Next
+                <%= inline_svg("icons/arrow_right.svg", class: "Icon") %>
+              </a>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+
     </main>
   </body>
 </html>

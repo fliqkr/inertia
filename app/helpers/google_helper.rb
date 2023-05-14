@@ -9,12 +9,14 @@ module GoogleHelper
   TLD = config[:tld]
   USER_AGENT = config[:user_agent]
 
-  def google_text_search(query)
+  def google_text_search(query, page)
     # Encode the query
     query = URI.encode_www_form_component(query).gsub('+', '%20')
 
+    puts page, page * 10
+
     # Send the request to Google
-    url = "https://www.google.#{TLD}/search?q=#{query}"
+    url = "https://www.google.#{TLD}/search?q=#{query}&start=#{page * 10}"
     res = HTTParty.get(url, headers: { 'User-Agent' => USER_AGENT })
     html = res.body
 
@@ -59,8 +61,11 @@ module GoogleHelper
       }
     end
 
+    # Count the amount of pages
+    pages = dom.css('.AaVjTc .fl').length + 1 # NOTE: We add one more because of the current one we are on.
+
     # Return the results
-    results
+    { results: results, pages: pages }
   end
 
   # Returns sublinks that exist within a page
