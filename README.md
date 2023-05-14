@@ -74,13 +74,13 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 3. Build the docker image:
 
    ```shell
-   docker build -t inertia:1.0 .
+   $ docker build -t inertia:1.0 .
    ```
 
 4. Run the docker image:
 
    ```shell
-   docker run [-d] -p 3000:3000 [--name inertia] inertia:1.0
+   $ docker run [-d] -p 3000:3000 [--name inertia] inertia:1.0
    ```
 
 ### (Optional) Use a reverse proxy like nginx
