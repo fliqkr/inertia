@@ -83,21 +83,22 @@
               <span class="Separator"></span>
             <% end %>
 
-            <% (1..@max_pages).each do |page| %>
-              <% if page == @search_page %>
-                <span class="Current"><%= page %></span>
-              <% elsif page.between?(@search_page - 2, @search_page + 2) %>
-                <a
-                  href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{page}" %>"
-                ><%= page %></a>
-              <% elsif page == 1 || page == @max_pages %>
-                <a
-                  href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{page}" %>"
-                ><%= page %></a>
-              <% elsif page == @search_page - 3 || page == @search_page + 3 %>
-                <span class="Disabled">...</span>
+            <div class="Pages"><% (1..@max_pages).each do |page| %>
+                <% if page == @search_page %>
+                  <span class="Current"><%= page %></span>
+                <% elsif page.between?(@search_page - 2, @search_page + 2) %>
+                  <a
+                    href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{page}" %>"
+                  ><%= page %></a>
+                <% elsif page == 1 || page == @max_pages %>
+                  <a
+                    href="<%= "/search?query=#{@search_query}&page=#{@search_page}&type=#{@search_type}&page=#{page}" %>"
+                  ><%= page %></a>
+                <% elsif page == @search_page - 3 || page == @search_page + 3 %>
+                  <span class="Disabled">...</span>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
 
             <% if @search_page < @max_pages %>
               <span class="Separator"></span>
