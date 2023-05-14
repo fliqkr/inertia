@@ -14,11 +14,9 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 
 ## Features
 
-- JavaScript-free by default!
-  - Some QoL functions that require JavaScript can optionally be enabled.
-- Proxied text searches _Google_, image searches on _Qwant_.
-- Clean, user-friendly user interface.
-- Quick scrape and parse times.
+- **JavaScript-free by default:** Inertia is designed to work without JavaScript, but you can optionally enable some (future) quality of life functions that depend on it.
+- **Proxied searches:** Inertia performs text searches using _Google_ and image searches using _Qwant_.
+- **Fast and efficient:** Inertia scrapes and parses text results quickly (~0.4-0.8s for text results), making it a speedy alternative to other engines.
 
 ## Installation
 
@@ -60,6 +58,30 @@ $ bin/rails credentials:edit
 ```
 
 5. You can now launch Inertia with the `scripts/production.sh` script.
+
+### Setup Inertia (Using Docker)
+
+1. Clone the repository to a local directory:
+
+   ```shell
+   $ git clone https://github.com/fliqkr/inertia.git
+   $ cd inertia/
+   ```
+
+2. Edit `config/inertia.yml`:
+   - Change the `host->protocol` and `host->hostname` field to your own.
+   - You can change any other options that you'd like to configure.
+3. Build the docker image:
+
+```shell
+docker build -t inertia:1.0 .
+```
+
+4. Run the docker image:
+
+```shell
+docker run [-d] -p 3000:3000 [--name inertia] inertia:1.0
+```
 
 ### (Optional) Use a reverse proxy like nginx
 
