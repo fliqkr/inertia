@@ -32,15 +32,17 @@
         <p>We couldn't find any results for "<b><%= @search_query %></b>".</p>
         <p>Here are a few tips to help you refine your search:</p>
         <ul>
-          <li>Try using more general keywords or try removing some of the search terms.</li>
+          <li>Try using more general keywords or try removing some of the search
+            terms.</li>
           <li>Make sure that all of the words are spelled correctly.</li>
           <li>Try searching for related terms or synonyms of your search.</li>
-          <li>Check your filters to make sure they don't exclude relevant results.</li>
-          <li>If none of the above work, please try again later. The IP address of the host may be temporarily blocked by the search engine.</li>
+          <li>Check your filters to make sure they don't exclude relevant
+            results.</li>
+          <li>If none of the above work, please try again later. The IP address
+            of the host may be temporarily blocked by the search engine.</li>
         </ul>
       </div>
     <% end %>
-
     <!-- Results themselves -->
     <% @results.each do |result| %>
       <div class="Result">
