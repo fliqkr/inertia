@@ -1,0 +1,23 @@
+{
+  "name": "inertia",
+  "version": "1.0.0",
+  "description": "Inertia is a free, privacy-respecting, and stylish meta-search engine.",
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:css": "sass ./app/assets/stylesheets/main.scss ./app/assets/builds/main.css --no-source-map --load-path=node_modules"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.19",
+    "sass": "^1.62.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fliqkr/inertia.git"
+  },
+  "author": "fliqkr",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fliqkr/inertia/issues"
+  },
+  "homepage": "https://github.com/fliqkr/inertia#readme"
+}

@@ -45,8 +45,6 @@ class SearchController < ApplicationController
       when 'bing'
       end
 
-      puts @results
-
       rendered_page = :search_image
     end
     # ---------->

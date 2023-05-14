@@ -458,4 +458,21 @@
     &[data-engine="qwant"] {
     }
   }
+
+  .Results__Empty {
+    p {
+      font-size: 20px;
+      line-height: 32px;
+      margin: 0;
+    }
+
+    ul {
+      color: $muted;
+      padding-left: 1rem;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 0.5rem 0;
+      max-width: 600px;
+    }
+  }
 }

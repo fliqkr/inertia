@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Archivo";
-  src: url("/assets/Archivo-Variable.woff2") format("woff2"),
-    url("/assets/Archivo-Variable.woff") format("woff"),
-    url("/assets/Archivo-Variable.ttf") format("truetype");
+  src: font-url("Archivo-Variable.woff2") format("woff2"),
+    font-url("Archivo-Variable.woff") format("woff"),
+    font-url("Archivo-Variable.ttf") format("truetype");
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
@@ -10,9 +10,9 @@
 
 @font-face {
   font-family: "Archivo";
-  src: url("/assets/Archivo-VariableItalic.woff2") format("woff2"),
-    url("/assets/Archivo-VariableItalic.woff") format("woff"),
-    url("/assets/Archivo-VariableItalic.ttf") format("truetype");
+  src: font-url("Archivo-VariableItalic.woff2") format("woff2"),
+    font-url("Archivo-VariableItalic.woff") format("woff"),
+    font-url("Archivo-VariableItalic.ttf") format("truetype");
   font-weight: 100 900;
   font-display: swap;
   font-style: italic;

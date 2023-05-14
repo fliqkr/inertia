@@ -15,7 +15,9 @@
       <!-- Navigation Bar -->
       <nav class="Navbar">
         <div class="Navbar__Search">
-          <a class="ImageLink" href="/"><img class="Navbar__Logo" src="/assets/logo.svg"></a>
+          <a class="ImageLink" href="/">
+            <%= image_tag "logo.svg", alt: "Inertia's logo", class: "Navbar__Logo" %>
+          </a>
           <form action="/search">
             <div class="Input__Group Input__Group--Search">
               <input
