@@ -4,6 +4,16 @@ request: &request
 global: &global # The message displayed on the index page of Inertia
   motd: "Inertia is a stylish, privacy-respecting meta-search engine for the modern web."
 
+  # * Host options -->
+  host:
+    # The protocol used.
+    # Accepted options: http, https
+    protocol: "http"
+
+    # The domain name or IP address of your server.
+    # e.g. "inertia-search.xyz", "127.0.0.1:3000"
+    hostname: "127.0.0.1:3000"
+
   # * Global search options -->
   search:
     # The default engine for text searches.

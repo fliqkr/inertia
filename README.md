@@ -13,11 +13,9 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 ---
 
 ## Features
+
 - JavaScript-free by default!
   - Some QoL functions that require JavaScript can optionally be enabled.
-- Proxied text searches *Google*, image searches towards *Qwant*.
+- Proxied text searches _Google_, image searches towards _Qwant_.
 - Clean, user-friendly user interface.
 - Quick scrape and parse times.
-
-## Installation
-

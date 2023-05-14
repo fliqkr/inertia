@@ -58,4 +58,12 @@ class SearchController < ApplicationController
 
     render rendered_page || :search_text
   end
+
+  def opensearch
+    config = Rails.configuration.inertia.host
+    @protocol = config[:protocol]
+    @hostname = config[:hostname]
+
+    render layout: false, content_type: 'application/opensearchdescription+xml'
+  end
 end
