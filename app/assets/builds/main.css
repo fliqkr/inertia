@@ -1,0 +1,720 @@
+:root {
+  --color-bg-0: #121212;
+  --color-bg-1: #1e1e1e;
+  --color-bg-2: #2d2d2d;
+  --color-fg: #f5f5f5;
+  --color-muted: #a9a9a9;
+  --color-disabled: #6f6f6f;
+  --color-accent: #7e5bef;
+  --color-accent-2: #9477f2;
+  --color-accent-glow: #7e5bef40;
+  --color-visited: #683fec;
+  --radius: 10px;
+  --radius-sm: 8px;
+}
+:root .Icon--on-background {
+  fill: var(--color-fg);
+}
+:root .Icon--muted {
+  fill: var(--color-muted);
+}
+:root .Icon--on-foreground {
+  fill: var(--color-bg-0);
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: font-url("Archivo-Variable.woff2") format("woff2"), font-url("Archivo-Variable.woff") format("woff"), font-url("Archivo-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo";
+  src: font-url("Archivo-VariableItalic.woff2") format("woff2"), font-url("Archivo-VariableItalic.woff") format("woff"), font-url("Archivo-VariableItalic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+}
+.Page[data-page=index] {
+  justify-content: center;
+  align-items: center;
+}
+.Page[data-page=index] .Input__Group--Search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 1.5rem;
+  width: 550px;
+}
+.Page[data-page=index] input.Input__Default.Input--Search {
+  border-radius: var(--radius);
+  width: 100%;
+  padding: 1rem 1.2rem;
+  padding-right: 3.5rem;
+  height: 50px;
+  outline: 3px solid transparent;
+}
+.Page[data-page=index] input.Input__Default.Input--Search:focus {
+  box-shadow: 0 8px 25px -5px var(--color-accent-glow), 0 3px 10px -6px var(--color-accent-glow);
+  transform: scale(1.05);
+  font-size: 18px;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.Page[data-page=index] input.Input__Default.Input--Search:focus ~ .Button--Search {
+  right: -5px;
+}
+.Page[data-page=index] button.Button.Button--Search {
+  position: absolute;
+  right: 7.5px;
+  border-radius: var(--radius-sm);
+  width: 35px;
+  height: 35px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: var(--color-bg-0);
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s;
+}
+.Page[data-page=index] button.Button.Button--Search:hover {
+  background-color: var(--color-accent-2);
+}
+.Page[data-page=index] button.Button.Button--Search .Icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+.Page[data-page=index] .Logo {
+  width: 100%;
+}
+.Page[data-page=index] .MOTD {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+  .Page[data-page=index] .Logo {
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .Page[data-page=index] .MOTD {
+    max-width: 400px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .Page[data-page=index] {
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+  .Page[data-page=index] .Input__Group--Search {
+    width: 100%;
+  }
+  .Page[data-page=index] input.Input__Default.Input--Search:focus {
+    transform: none;
+    font-size: 16px;
+  }
+  .Page[data-page=index] input.Input__Default.Input--Search:focus ~ .Button--Search {
+    right: 7.5px;
+  }
+  .Page[data-page=index] .MOTD {
+    text-align: center;
+  }
+}
+.Page[data-page=search] {
+  --max-width: 1200px;
+  --page-padding: 2rem;
+}
+.Page[data-page=search][data-type="1"] .Navbar .Navbar__Subbar .Navbar__Button[data-type="1"], .Page[data-page=search][data-type="0"] .Navbar .Navbar__Subbar .Navbar__Button[data-type="0"] {
+  background-color: var(--color-bg-1) !important;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+.Page[data-page=search][data-type="1"] .Navbar .Navbar__Subbar .Navbar__Button[data-type="1"] .Icon, .Page[data-page=search][data-type="0"] .Navbar .Navbar__Subbar .Navbar__Button[data-type="0"] .Icon {
+  fill: var(--color-accent);
+}
+.Page[data-page=search] .Navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-bg-2);
+  gap: 1.5rem;
+}
+.Page[data-page=search] .Navbar .Navbar__Search,
+.Page[data-page=search] .Navbar .Navbar__Subbar {
+  max-width: var(--max-width);
+}
+.Page[data-page=search] .Navbar .Navbar__Search {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.Page[data-page=search] .Navbar .Navbar__Search .Navbar__Logo {
+  max-height: 40px;
+}
+.Page[data-page=search] .Navbar .Navbar__Search form,
+.Page[data-page=search] .Navbar .Navbar__Search .Input__Group--Search {
+  width: 100%;
+  max-width: calc(var(--max-width) / 2);
+}
+.Page[data-page=search] .Navbar .Navbar__Search .Input__Group--Search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.Page[data-page=search] .Navbar .Navbar__Search input.Input__Default.Input--Search {
+  border-radius: var(--radius);
+  width: 100%;
+  padding: 0.8rem 1rem;
+  outline: 3px solid transparent;
+  height: 45px;
+  font-size: 16px;
+}
+.Page[data-page=search] .Navbar .Navbar__Search input.Input__Default.Input--Search:focus {
+  box-shadow: 0 6px 15px -3px var(--color-accent-glow), 0 2px 6px -4px var(--color-accent-glow);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.Page[data-page=search] .Navbar .Navbar__Search button.Button.Button--Search {
+  position: absolute;
+  right: 0;
+  border-radius: var(--radius);
+  width: 45px;
+  height: 45px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: var(--color-bg-0);
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s;
+}
+.Page[data-page=search] .Navbar .Navbar__Search button.Button.Button--Search:hover {
+  background-color: var(--color-accent-2);
+}
+.Page[data-page=search] .Navbar .Navbar__Search button.Button.Button--Search .Icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+.Page[data-page=search] .Navbar .Navbar__Subbar {
+  display: flex;
+  gap: 1rem;
+}
+.Page[data-page=search] .Navbar .Navbar__Subbar .Navbar__Button {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.33rem;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.33rem 0.66rem;
+  transition: 0.1s;
+}
+.Page[data-page=search] .Navbar .Navbar__Subbar .Navbar__Button .Icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  fill: var(--color-muted);
+}
+.Page[data-page=search] .Navbar .Navbar__Subbar .Navbar__Button:hover {
+  background-color: var(--color-bg-1);
+}
+.Page[data-page=search] .Search {
+  padding: var(--page-padding);
+}
+.Page[data-page=search] .Search .Results__Wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 3rem;
+}
+.Page[data-page=search] .Search .TimeElapsed {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 14px;
+}
+.Page[data-page=search] .Widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.Page[data-page=search] .Widgets .Widget {
+  border-radius: var(--radius);
+  background-color: var(--color-bg-1);
+  outline: 2px solid var(--color-bg-2);
+  outline-offset: 2px;
+  max-width: 500px;
+}
+.Page[data-page=search] .Widgets .Widget .Widget__Button {
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border-top: 1px solid var(--color-bg-2);
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.Page[data-page=search] .Widgets .Widget .Widget__Button .Icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-left: auto;
+}
+.Page[data-page=search] .Widgets .Widget .Widget__Button:hover {
+  background-color: var(--color-bg-2);
+}
+.Page[data-page=search] .Widgets .Widget[data-widget=wikipedia] {
+  display: flex;
+  flex-direction: column;
+}
+.Page[data-page=search] .Widgets .Widget[data-widget=wikipedia] .Widget__Content {
+  padding: 1.25rem;
+}
+.Page[data-page=search] .Widgets .Widget[data-widget=wikipedia] .Widget__Content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.Page[data-page=search] .Widgets .Widget[data-widget=wikipedia] .Widget__Content p {
+  font-size: 14px;
+  color: var(--color-muted);
+  line-height: 20px;
+  margin-bottom: 0;
+}
+.Page[data-page=search] .Widgets .Widget[data-widget=wikipedia] .Widget__Content .Thumbnail {
+  float: right;
+  max-width: 100px;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  border-radius: var(--radius);
+}
+.Page[data-page=search] .Results[data-type=text] {
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.Page[data-page=search] .Results[data-type=text] .Result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.33rem;
+  width: clamp(80vw, 80vw, 650px);
+  max-width: 650px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2,
+.Page[data-page=search] .Results[data-type=text] .Result p {
+  margin: 0;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2,
+.Page[data-page=search] .Results[data-type=text] .Result h3 {
+  font-size: 20px;
+  line-height: 24px;
+  position: relative;
+  width: fit-content;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2,
+.Page[data-page=search] .Results[data-type=text] .Result h2 a, .Page[data-page=search] .Results[data-type=text] .Result h2::after,
+.Page[data-page=search] .Results[data-type=text] .Result h3,
+.Page[data-page=search] .Results[data-type=text] .Result h3 a,
+.Page[data-page=search] .Results[data-type=text] .Result h3::after {
+  transition: 0.1s;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2::after,
+.Page[data-page=search] .Results[data-type=text] .Result h3::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-fg);
+  opacity: 0.1;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2:hover,
+.Page[data-page=search] .Results[data-type=text] .Result h2:hover a,
+.Page[data-page=search] .Results[data-type=text] .Result h3:hover,
+.Page[data-page=search] .Results[data-type=text] .Result h3:hover a {
+  color: var(--color-accent);
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2:hover::after,
+.Page[data-page=search] .Results[data-type=text] .Result h3:hover::after {
+  background-color: var(--color-accent);
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2 a,
+.Page[data-page=search] .Results[data-type=text] .Result h3 a {
+  display: inline-block;
+  color: var(--color-fg);
+  text-decoration: none;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h2 .Result__Link {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.Page[data-page=search] .Results[data-type=text] .Result h3 {
+  font-size: 16px;
+  line-height: 28px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result p {
+  font-size: 16px;
+  color: var(--color-muted);
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__URL {
+  display: flex;
+  align-items: center;
+  gap: 0.33rem;
+  color: var(--color-disabled);
+  font-size: 14px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__URL span {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__URL .Result__Favicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--color-bg-1);
+  border-radius: 9999px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__URL .Result__Favicon img {
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__Sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-bg-1);
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__Sublinks .Result__Sublink {
+  display: flex;
+  flex-direction: column;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__Sublinks .Result__Sublink h3 {
+  margin-top: 0;
+  line-height: 16px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__Sublinks .Result__Sublink h3 a::after {
+  display: none;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__Sublinks .Result__Sublink p {
+  font-size: 14px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent {
+  color: var(--color-disabled);
+  font-size: 14px;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item {
+  display: block;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Key,
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Value {
+  display: inline-block;
+  width: fit-content;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Key a,
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Value a {
+  color: var(--color-fg);
+  text-underline-offset: 4px;
+  transition: 0.1s;
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Key a:hover,
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Value a:hover {
+  color: var(--color-accent);
+}
+.Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object .RichContent__Item .RichContent__Value {
+  color: var(--color-muted);
+}
+.Page[data-page=search] .Results[data-type=image] .Images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: calc(100vw - var(--page-padding));
+}
+.Page[data-page=search] .Results[data-type=image] .Images .Image {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  border-radius: var(--radius);
+  width: 100%;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: 0.1s;
+  outline: 2px solid transparent;
+}
+.Page[data-page=search] .Results[data-type=image] .Images .Image:hover {
+  background-color: var(--color-bg-1);
+  color: var(--color-fg);
+  text-decoration: underline;
+  outline: 2px solid var(--color-bg-1);
+  outline-offset: 3px;
+}
+.Page[data-page=search] .Results[data-type=image] .Images .Image img {
+  min-width: 200px;
+  width: auto;
+  height: 200px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background-color: var(--color-bg-2);
+}
+.Page[data-page=search] .Results[data-type=image] .Images .Image span {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 24px;
+  font-size: 14px;
+  text-underline-offset: 8px;
+  text-decoration-color: var(--color-muted);
+}
+.Page[data-page=search] .Results__Empty p {
+  font-size: 20px;
+  line-height: 32px;
+  margin: 0;
+}
+.Page[data-page=search] .Results__Empty ul {
+  color: var(--color-muted);
+  padding-left: 1rem;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0.5rem 0;
+  max-width: 600px;
+}
+.Page[data-page=search] .Pagination {
+  margin-top: 2rem;
+  width: clamp(80vw, 80vw, 650px);
+  max-width: 650px;
+  text-align: center;
+  font-size: 16px;
+}
+.Page[data-page=search] .Pagination,
+.Page[data-page=search] .Pagination .Pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.Page[data-page=search] .Pagination a:not(.Switch),
+.Page[data-page=search] .Pagination .Current {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 9999px;
+  transition: 0.1s;
+  color: var(--color-muted);
+}
+.Page[data-page=search] .Pagination .Current {
+  background-color: var(--color-bg-2);
+  outline-offset: 2px;
+  color: var(--color-fg);
+  font-weight: 600;
+}
+.Page[data-page=search] .Pagination a:hover {
+  background-color: var(--color-bg-1);
+  color: var(--color-fg);
+}
+.Page[data-page=search] .Pagination .Switch {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.33rem;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.66rem;
+  box-sizing: border-box;
+  height: 32px;
+  transition: 0.1s;
+}
+.Page[data-page=search] .Pagination .Switch .Icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  fill: var(--color-muted);
+}
+.Page[data-page=search] .Pagination .Switch:hover {
+  background-color: var(--color-bg-1);
+}
+.Page[data-page=search] .Pagination .Disabled {
+  color: var(--color-disabled);
+}
+.Page[data-page=search] .Pagination .Separator {
+  margin: 0 0.15rem;
+  width: 1px;
+  height: 16px;
+  background-color: var(--color-bg-2);
+}
+
+@media only screen and (max-width: 640px) {
+  .Page[data-page=search] {
+    --page-padding: 1rem;
+  }
+  .Page[data-page=search] .Navbar {
+    padding: 1.5rem;
+    padding-top: 2rem;
+  }
+  .Page[data-page=search] .Navbar .Navbar__Search {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .Page[data-page=search] .Navbar .Navbar__Subbar {
+    justify-content: center;
+  }
+  .Page[data-page=search] .Results[data-type=text] .Result {
+    width: 100%;
+    max-width: unset;
+  }
+  .Page[data-page=search] .Results[data-type=text] .Result .Result__Description {
+    text-align: justify;
+  }
+  .Page[data-page=search] .Results[data-type=text] .Result .Result__Sublinks .Result__Sublink .Sublink__Description {
+    max-width: 250px;
+  }
+  .Page[data-page=search] .Results[data-type=text] .Result .Result__RichContent--object {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .Page[data-page=search] .Results[data-type=image] .Images {
+    gap: 1.25rem;
+  }
+  .Page[data-page=search] .Results[data-type=image] .Images .Image {
+    padding: unset;
+    border-radius: unset;
+    gap: 0.33rem;
+  }
+  .Page[data-page=search] .Results[data-type=image] .Images .Image:hover {
+    background-color: unset;
+    outline: unset;
+    outline-offset: unset;
+  }
+  .Page[data-page=search] .Pagination {
+    width: 100%;
+    max-width: unset;
+    flex-wrap: wrap;
+  }
+  .Page[data-page=search] .Pagination .Pages {
+    width: 100%;
+    order: 1;
+  }
+  .Page[data-page=search] .Pagination .Switch:nth-of-type(1) {
+    order: 2;
+  }
+  .Page[data-page=search] .Pagination .Separator:first-of-type {
+    display: none;
+  }
+  .Page[data-page=search] .Pagination .Separator:last-of-type {
+    order: 3;
+  }
+  .Page[data-page=search] .Pagination .Switch:nth-of-type(2) {
+    order: 4;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .Page[data-page=search] .Search .Results__Wrapper {
+    flex-direction: column;
+    justify-content: unset;
+    gap: 1.5rem;
+  }
+}
+body {
+  background-color: var(--color-bg-0);
+  color: var(--color-fg);
+  font-family: "Archivo", sans-serif;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+.Page.Page--flex {
+  display: flex;
+  flex-direction: column;
+}
+.Page.Page--fullscreen {
+  min-height: 100vh;
+}
+
+input.Input__Default {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(--color-bg-1);
+  color: var(--color-muted);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1rem;
+  transition: 0.25s;
+  border-radius: var(--border-radius);
+}
+input.Input__Default:hover {
+  background-color: var(--color-bg-2);
+}
+input.Input__Default:focus {
+  background-color: var(--color-bg-2);
+  color: var(--color-fg);
+}
+input.Input__Default::placeholder {
+  color: var(--color-muted);
+}
+
+.Hidden {
+  display: none;
+}
+
+.Muted {
+  color: var(--color-muted);
+}
+
+.ImageLink {
+  text-decoration: none;
+}
+.ImageLink img {
+  vertical-align: middle;
+}
