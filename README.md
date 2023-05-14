@@ -52,10 +52,10 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 
 4. Generate Rails credentials and save them:
 
-```shell
-# This should open your default editor. Read the notes and then write it to disk.
-$ bin/rails credentials:edit
-```
+   ```shell
+   # This should open your default editor. Read the notes and then write it to disk.
+   $ bin/rails credentials:edit
+   ```
 
 5. You can now launch Inertia with the `scripts/production.sh` script.
 
@@ -73,15 +73,15 @@ $ bin/rails credentials:edit
    - You can change any other options that you'd like to configure.
 3. Build the docker image:
 
-```shell
-docker build -t inertia:1.0 .
-```
+   ```shell
+   docker build -t inertia:1.0 .
+   ```
 
 4. Run the docker image:
 
-```shell
-docker run [-d] -p 3000:3000 [--name inertia] inertia:1.0
-```
+   ```shell
+   docker run [-d] -p 3000:3000 [--name inertia] inertia:1.0
+   ```
 
 ### (Optional) Use a reverse proxy like nginx
 
