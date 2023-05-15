@@ -37,10 +37,16 @@ class SearchController < ApplicationController
       # * Special Results -->
 
       # Priority Widgets ->
+      # NOTE: The order here doesn't matter, as in a regular search,
+      #       more than 1 priority widgets shouldn't appear.
 
       # IP/User Agent
       network_information = get_network_information(request, @search_query)
       @widgets << { type: 'network_information', content: network_information } unless network_information.nil?
+
+      # Conversion
+      conversion = get_conversion(@search_query)
+      puts 'conversion', conversion
 
       # Wikipedia ->
       wikipedia_result = get_wikipedia_summary(@results)
