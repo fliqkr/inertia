@@ -42,15 +42,15 @@ class SearchController < ApplicationController
 
       # IP/User Agent
       network_information = get_network_information(request, @search_query)
-      @widgets << { type: 'network_information', content: network_information } unless network_information.nil?
+      @widgets << { type: 'network_information', content: network_information } unless !network_information
 
       # Conversion
       conversion = get_conversion(@search_query)
-      puts 'conversion', conversion
+      @widgets << { type: 'conversion', content: conversion } unless !conversion
 
       # Wikipedia ->
       wikipedia_result = get_wikipedia_summary(@results)
-      @widgets << { type: 'wikipedia', content: wikipedia_result } unless wikipedia_result.nil?
+      @widgets << { type: 'wikipedia', content: wikipedia_result } unless !wikipedia_result
 
       rendered_page = :search_text
     when 1 # Image search

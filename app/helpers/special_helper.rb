@@ -14,39 +14,53 @@ module SpecialHelper
   end
 
   def get_conversion(query)
+    # Get the conversion object
     conversion = determine_conversion(query)
-    puts 'a', conversion
     return nil unless conversion
 
-    type, from, to = conversion
-    converter = Converter.new(type, from, to)
+    value = conversion[:value]
+    from = conversion[:from]
+    to = conversion[:to]
 
-    match = query.match(/(\d+)\s+#{Regexp.escape(from)}\s+to\s+#{Regexp.escape(to)}/)
-    puts 'b', match
-    return nil unless match
+    conversion_type = determine_conversion_type(from, to)
+    return nil unless conversion_type
 
-    value = match[1].to_i
+    converter = Converter.new(conversion_type, from, to)
 
-    result = converter.convert(value)
+    from_real_name = ConversionDefinition.resolve_alias(conversion_type, from)
+    to_real_name = ConversionDefinition.resolve_alias(conversion_type, to)
+    from_pretty_name = ConversionDefinition.get_pretty_name(conversion_type, from_real_name)
+    to_pretty_name = ConversionDefinition.get_pretty_name(conversion_type, to_real_name)
 
-    "#{value} #{from} is equal to #{result} #{to}"
+    { query: "#{value} #{from_pretty_name} in #{to_pretty_name}", result_pretty_name: to_pretty_name, result: converter.convert(value) }
   end
 
   def determine_conversion(query)
-    conversions = ConversionDefinition.valid_conversions
+    # Check if the regex matches the query
+    regex = /\s?(\d+)\s?(\S+)\s?(to|in)\s?(\S+)/
+    match = query.match(regex)
+    return nil unless match
 
-    conversions.each do |type, units|
-      units.each do |unit, definition|
-        aliases = definition[:aliases]
-
-        if aliases.any? { |alias_str| query.include?(alias_str) }
-          from = unit
-          to = aliases.find { |alias_str| query.include?(alias_str) }
-          return [type, from, to]
-        end
+    # Get the different values
+    value =
+      begin
+        Float(match[1])
+      rescue ArgumentError, TypeError
+        nil
       end
-    end
+    return nil unless value
 
-    nil
+    from = match[2]
+    to = match[4]
+    return nil unless from || to
+
+    { value: value, from: from, to: to }
+  end
+
+  # Determines the type of a conversion by trying to match the two types to the definitions
+  def determine_conversion_type(from, to)
+    ConversionDefinition.valid_conversions.keys.detect do |key|
+      ConversionDefinition.valid_conversion?(key, from, to)
+    end
   end
 end
