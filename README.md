@@ -7,7 +7,7 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 <p align="center">
     <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=ruby&logoColor=white&color=cc342d&labelColor=db433b&label=Made With&message=Ruby" height="25">
     <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=adblock&logoColor=black&color=ffe70b&label=&message=JavaScript Free" height="25">
-    <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=awesome lists&logoColor=white&color=7e5bef&label=&message=Private" height="25">
+    <img src="https://img.shields.io/static/v1?style=for-the-badge&logo=awesome lists&logoColor=white&color=7e5bef&label=&message=Privacy Friendly" height="25">
 </p>
 
 ---
