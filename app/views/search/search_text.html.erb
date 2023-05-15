@@ -12,7 +12,11 @@
             <h4 class="Value"><%= content[:ip] %></h4>
 
             <p class="Key">Your user agent is...</p>
-            <h4 class="Value"><%= content[:user_agent] %></h4>
+            <h4 class="Value Small"><%= content[:user_agent] %></h4>
+
+          <% when 'conversion' %>
+            <p class="Key"><%= content[:query] %> is...</p>
+            <h4 class="Value"><%= content[:result] %> <%= content[:result_pretty_name] %></h4>
 
           <% when 'wikipedia' %>
             <div class="Widget__Content">

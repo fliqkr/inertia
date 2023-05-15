@@ -171,13 +171,20 @@
     flex-direction: column;
     gap: 1rem;
 
+    &,
+    .Widget {
+      width: 100%;
+      max-width: 500px;
+    }
+
     .Widget {
       border-radius: var(--radius);
       background-color: $bg-1;
       outline: 2px solid $bg-2;
       outline-offset: 2px;
-      max-width: 500px;
       padding: 1.25rem;
+      box-sizing: border-box;
+      width: clamp(300px, 500px, 500px);
 
       // Mostly used for links to third-party sites
       .Widget__Button {
@@ -202,7 +209,8 @@
         }
       }
 
-      &[data-widget="network_information"] {
+      &[data-widget="network_information"],
+      &[data-widget="conversion"] {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -217,7 +225,11 @@
         h4.Value {
           margin: 0;
           font-weight: 600;
-          font-size: 20px;
+          font-size: 32px;
+
+          &.Small {
+            font-size: 20px;
+          }
 
           &:not(:last-child) {
             margin-bottom: 0.75rem;
