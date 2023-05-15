@@ -14,6 +14,9 @@ global: &global # The message displayed on the index page of Inertia
     # e.g. "inertia-search.xyz", "127.0.0.1:3000"
     hostname: "127.0.0.1:3000"
 
+    # Whether or not you use nginx as your proxy
+    proxy: false
+
   # * Global search options -->
   search:
     # The default engine for text searches.

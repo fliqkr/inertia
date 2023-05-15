@@ -26,8 +26,8 @@ module GoogleHelper
     # Select result boxes
     # You can view the current DOM layout of Google by just searching
     # for something and exploring it with devtools.
-    # NOTE: Class `.liYKde` contains a href for '#' which breaks stuff.
-    dom.css('div.g:not(.liYKde)').each do |item|
+    # NOTE: Classes like `.liYKde` contains a href for '#' which breaks stuff.
+    dom.css('div.g:not(.liYKde):not(.g-blk)').each do |item|
       # Result Properties -->
 
       # Select the result title, description and link

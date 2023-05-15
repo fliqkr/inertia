@@ -22,7 +22,7 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 
 ### Prerequisites
 
-- You need Ruby `3.0.6`, which you can download using your package manager. If you package manager doesn't serve the the version `3.0.6` of Ruby, try [RVM](https://rvm.io/rvm/install).
+- You need Ruby `3.0.6` or anything newer than `3.0.0`, which you can download using your package manager.
 - You will also need [Node.JS LTS (>=18.16.0)](https://nodejs.org/en) for pre-compiling assets, which you can download from the website or from your package manager.
 
 ### Setup Inertia
@@ -71,13 +71,20 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
 2. Edit `config/inertia.yml`:
    - Change the `host->protocol` and `host->hostname` field to your own.
    - You can change any other options that you'd like to configure.
-3. Build the docker image:
+3. Generate Rails credentials and save them:
+
+   ```shell
+   # This should open your default editor. Read the notes and then write it to disk.
+   $ bin/rails credentials:edit
+   ```
+
+4. Build the docker image:
 
    ```shell
    $ docker build -t inertia:1.0 .
    ```
 
-4. Run the docker image:
+5. Run the docker image:
 
    ```shell
    $ docker run [-d] -p 3000:3000 [--name inertia] inertia:1.0
@@ -97,6 +104,9 @@ server {
 
    location / {
       proxy_pass http://127.0.0.1:3000;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header User-Agent $http_user_agent;
    }
 }
 ```

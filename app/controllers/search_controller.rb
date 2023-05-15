@@ -4,6 +4,7 @@ class SearchController < ApplicationController
   include QwantHelper
   include UrlHelper
   include WikipediaHelper
+  include SpecialHelper
 
   def search
     @search_query = params[:query]
@@ -33,9 +34,17 @@ class SearchController < ApplicationController
       @max_pages = raw[:pages]
       @widgets = []
 
+      # * Special Results -->
+
+      # Priority Widgets ->
+
+      # IP/User Agent
+      network_information = get_network_information(request, @search_query)
+      @widgets << { type: 'network_information', content: network_information } unless network_information.nil?
+
       # Wikipedia ->
       wikipedia_result = get_wikipedia_summary(@results)
-      @widgets << { type: 'wikipedia', content: wikipedia_result } if !wikipedia_result.nil?
+      @widgets << { type: 'wikipedia', content: wikipedia_result } unless wikipedia_result.nil?
 
       rendered_page = :search_text
     when 1 # Image search

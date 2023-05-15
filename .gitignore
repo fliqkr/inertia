@@ -17,6 +17,7 @@
 /config/credentials.yml.enc
 
 /public/assets/
+/app/assets/builds/
 /node_modules/
 yarn.lock
 package-lock.json

@@ -5,9 +5,16 @@
     <div class="Widgets">
       <% @widgets.each do |widget| %>
         <div class="Widget" data-widget="<%= widget[:type] %>">
+          <% content = widget[:content] %>
           <% case widget[:type] %>
-          <% when "wikipedia" %>
-            <% content = widget[:content] %>
+          <% when 'network_information' %>
+            <p class="Key">Your public IP address is...</p>
+            <h4 class="Value"><%= content[:ip] %></h4>
+
+            <p class="Key">Your user agent is...</p>
+            <h4 class="Value"><%= content[:user_agent] %></h4>
+
+          <% when 'wikipedia' %>
             <div class="Widget__Content">
               <img
                 src="data:image/png;base64,<%= content[:thumbnail][:data] %>"
@@ -25,6 +32,7 @@
       <% end %>
     </div>
   <% end %>
+
   <!-- Results -->
   <div class="Results" data-type="text">
     <% if @results.empty? %>
@@ -43,6 +51,7 @@
         </ul>
       </div>
     <% end %>
+
     <!-- Results themselves -->
     <% @results.each do |result| %>
       <div class="Result">

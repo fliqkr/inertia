@@ -177,6 +177,7 @@
       outline: 2px solid $bg-2;
       outline-offset: 2px;
       max-width: 500px;
+      padding: 1.25rem;
 
       // Mostly used for links to third-party sites
       .Widget__Button {
@@ -201,9 +202,33 @@
         }
       }
 
+      &[data-widget="network_information"] {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        p.Key {
+          color: $muted;
+          font-size: 14px;
+          font-style: italic;
+          margin: 0;
+        }
+
+        h4.Value {
+          margin: 0;
+          font-weight: 600;
+          font-size: 20px;
+
+          &:not(:last-child) {
+            margin-bottom: 0.75rem;
+          }
+        }
+      }
+
       &[data-widget="wikipedia"] {
         display: flex;
         flex-direction: column;
+        padding: 0;
 
         .Widget__Content {
           padding: 1.25rem;
