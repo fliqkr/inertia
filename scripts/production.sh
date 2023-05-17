@@ -13,5 +13,11 @@ if ! RAILS_ENV=production bundle exec rails assets:precompile; then
   exit 1
 fi
 
+echo -e '\e[32mApplying arguments...\e[0m'
+cmd="production bundle exec rails server"
+if [ ! -z "$1" ]; then
+  cmd="$cmd -p $1"
+fi
+
 echo -e '\e[32mLaunching Server...\e[0m'
-RAILS_ENV=production bundle exec rails server
+exec "RAILS_ENV=$cmd"
