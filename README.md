@@ -57,7 +57,15 @@ Inertia is a <em>free</em>, <em>privacy-respecting</em>, and <em>stylish</em> me
    $ bin/rails credentials:edit
    ```
 
-5. You can now launch Inertia with the `scripts/production.sh` script.
+5. You can now launch Inertia with the `scripts/production.sh` script.  
+   If you want to use another port instead of the default one (3000), specify it as the first argument.
+   ```shell
+   # Run inertia on the default port (3000)
+   $ sh scripts/production.sh
+
+   # Run inertia on the port 1234
+   $ sh scripts/production.sh 1234
+   ```
 
 ### Setup Inertia (Using Docker)
 
